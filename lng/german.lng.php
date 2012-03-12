@@ -1650,4 +1650,4 @@ $lng['admin']['speciallogwarning'] = 'ACHTUNG: Durch diese Einstellungen werden 
 // ADDED IN 0.9.27-mod_peruser
 $lng['admin']['mod_peruser_settings'] = 'Mod_peruser';
 $lng['serversettings']['mod_peruser']['title'] = 'mod_peruser nutzen';
-$lng['serversettings']['mod_peruser']['description'] = 'Hiermit werden alle Anfragen mit dem jeweiligen Benutzerkonto ausgeführt. <br /><br /><b>Diese einstellung benötigt eine spezielle Apache-Konfiguration</b>';
+$lng['serversettings']['mod_peruser']['description'] = 'Hiermit werden alle Anfragen mit dem jeweiligen Benutzerkonto ausgeführt. <br /><br /><b>Diese einstellung ben&ouml;tigt eine spezielle Apache-Konfiguration</b>';
