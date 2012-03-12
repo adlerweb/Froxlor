@@ -861,6 +861,11 @@ class apache
 		{
 			$vhost_content.= $this->settings['system']['default_vhostconf'] . "\n";
 		}
+		
+		if($this->settings['system']['mod_peruser'] == '1' )
+		{
+			$vhost_content.= 'ServerEnvironment "' . $domain['loginname'] . '" "' . $domain['loginname'] . '"' . "\n";
+		}
 
 		$vhost_content.= '</VirtualHost>' . "\n";
 		return $vhost_content;

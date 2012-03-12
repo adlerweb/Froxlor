@@ -1646,3 +1646,8 @@ $lng['serversettings']['phpfpm_settings']['idle_timeout']['description'] = 'Time
 $lng['panel']['cancel'] = 'abbrechen';
 $lng['admin']['delete_statistics'] = 'Statistiken L&ouml;schen';
 $lng['admin']['speciallogwarning'] = 'ACHTUNG: Durch diese Einstellungen werden Sie alle bisherige Statistiken dieser Domain verlieren. Wenn Sie dabei wirklich sicher sind, geben Sie bitte folgenden Text in das nachfolgende Textfeld ein: "'.$lng['admin']['delete_statistics'].'" und best&auml;tigen Sie mit "'.$lng['panel']['delete'].'".<br /><br />';
+
+// ADDED IN 0.9.27-mod_peruser
+$lng['admin']['mod_peruser_settings'] = 'Mod_peruser';
+$lng['serversettings']['mod_peruser']['title'] = 'mod_peruser nutzen';
+$lng['serversettings']['mod_peruser']['description'] = 'Hiermit werden alle Anfragen mit dem jeweiligen Benutzerkonto ausgeführt. <br /><br /><b>Diese einstellung benötigt eine spezielle Apache-Konfiguration</b>';

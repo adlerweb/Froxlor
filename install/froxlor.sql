@@ -490,6 +490,7 @@ INSERT INTO `panel_settings` (`settinggroup`, `varname`, `value`) VALUES ('custo
 INSERT INTO `panel_settings` (`settinggroup`, `varname`, `value`) VALUES ('system', 'nameservers', '');
 INSERT INTO `panel_settings` (`settinggroup`, `varname`, `value`) VALUES ('system', 'mxservers', '');
 INSERT INTO `panel_settings` (`settinggroup`, `varname`, `value`) VALUES ('system', 'mod_log_sql', '0');
+INSERT INTO `panel_settings` (`settinggroup`, `varname`, `value`) VALUES ('system', 'mod_peruser', '0');
 INSERT INTO `panel_settings` (`settinggroup`, `varname`, `value`) VALUES ('system', 'mod_fcgid', '0');
 INSERT INTO `panel_settings` (`settinggroup`, `varname`, `value`) VALUES ('panel', 'sendalternativemail', '0');
 INSERT INTO `panel_settings` (`settinggroup`, `varname`, `value`) VALUES ('system', 'apacheconf_vhost', '/etc/apache/vhosts.conf');
