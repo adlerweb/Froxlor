@@ -1801,9 +1801,6 @@ if(isFroxlorVersion('0.9.27-svn1'))
 	if ($db->num_rows($handle) < 1) {
 		$db->query("INSERT INTO `panel_settings` (`settinggroup`, `varname`, `value`) VALUES ('phpfpm', 'idle_timeout', '30');");
 	}
-	
-	//Add mod_peruser
-	$db->query("INSERT INTO `panel_settings` (`settinggroup`, `varname`, `value`) VALUES ('system', 'mod_peruser', '0');");
 
 	updateToVersion('0.9.27-svn2');
 }
