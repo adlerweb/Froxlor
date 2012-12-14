@@ -852,12 +852,34 @@ class apache
 		}
 		else
 		{
-			mkDirWithCorrectOwnership($domain['customerroot'], $domain['documentroot'], $domain['guid'], $domain['guid'], true, true);
-			$vhost_content.= $this->getWebroot($domain);
-			if ($this->_deactivated == false) {
-				$vhost_content.= $this->composePhpOptions($domain,$ssl_vhost);
-				$vhost_content.= $this->getStats($domain);
+			if($this->settings['system']['mod_peruser'] == 1
+			   && $ssl_vhost === true
+			   && $domain['ssl'] == '1'
+			   && $this->settings['system']['use_ssl'] == '1') {
+				//mod_peruser does not really support ssl so use mod_proxy to provide it...
+				$query = "SELECT * FROM " . TABLE_PANEL_IPSANDPORTS . " WHERE `id`='" . $domain['ipandport'] . "'";
+				if($this->db->num_rows($query) < 1)
+				{
+					//No HTTP-Port found - will not create SSL-VHost
+					trigger_error('SSL-only vhost with mod_peruser enabled - can not continue for Domain ID: ' . $domain['id'] . ' - CustomerID: ' . $domain['customerid'] . ' - CustomerLogin: ' . $domain['loginname']."\n", E_USER_WARNING);
+				}
+				else
+				{
+					$ipandport_nossl = $this->db->query_first($query);
+					$vhost_content.= '  ProxyRequests off' . "\n";
+					$vhost_content.= '  ProxyPass / http://'.$domain['domain'].':'.$ipandport_nossl['port'].'/' . "\n";
+				}
 			}
+			else
+			{
+				mkDirWithCorrectOwnership($domain['customerroot'], $domain['documentroot'], $domain['guid'], $domain['guid'], true, true);
+			    $vhost_content.= $this->getWebroot($domain);
+			    if ($this->_deactivated == false) {
+				    $vhost_content.= $this->composePhpOptions($domain,$ssl_vhost);
+				    $vhost_content.= $this->getStats($domain);
+			    }
+            }
+
 			$vhost_content.= $this->getLogfiles($domain);
 		}
 

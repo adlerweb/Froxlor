@@ -1646,6 +1646,11 @@ $lng['panel']['cancel'] = 'abbrechen';
 $lng['admin']['delete_statistics'] = 'Statistiken Löschen';
 $lng['admin']['speciallogwarning'] = 'ACHTUNG: Durch diese Einstellungen werden Sie alle bisherige Statistiken dieser Domain verlieren. Wenn Sie dabei wirklich sicher sind, geben Sie bitte folgenden Text in das nachfolgende Textfeld ein: "'.$lng['admin']['delete_statistics'].'" und bestätigen Sie mit "'.$lng['panel']['delete'].'".<br /><br />';
 
+// ADDED IN 0.9.27-mod_peruser
+$lng['admin']['mod_peruser_settings'] = 'Mod_peruser';
+$lng['serversettings']['mod_peruser']['title'] = 'mod_peruser nutzen';
+$lng['serversettings']['mod_peruser']['description'] = 'Hiermit werden alle Anfragen mit dem jeweiligen Benutzerkonto ausgef&uuml;hrt. <br /><br /><b>Diese Einstellung ben&ouml;tigt eine spezielle Apache-Konfiguration</b>';
+
 // ADDED IN 0.9.28-svn5
 $lng['error']['operationnotpermitted'] = 'Diese Aktion ist nicht erlaubt!';
 $lng['error']['featureisdisabled'] = 'Die Funktion %s wurde deaktiviert. Kontaktieren Sie bitte Ihren Dienstleister.';
