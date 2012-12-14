@@ -29,13 +29,12 @@
 
 function inserttask($type, $param1 = '', $param2 = '', $param3 = '', $param4 = '')
 {
-	global $db, $settings;
+	global $db, $settings, $theme;
 
 	if($type == '1'
 	   || $type == '3'
 	   || $type == '4'
 	   || $type == '5'
-	   || $type == '9'
 	   || $type == '10')
 	{
 		$db->query('DELETE FROM `' . TABLE_PANEL_TASKS . '` WHERE `type`="' . $type . '"');
