@@ -278,9 +278,17 @@ class apache
 					$this->virtualhosts_data[$vhosts_filename].= '  SuexecUserGroup "' . $this->settings['phpfpm']['vhost_httpuser'] . '" "' . $this->settings['phpfpm']['vhost_httpgroup'] . '"' . "\n";
 
 					if ($row_ipsandports['ssl']) {
-						$this->virtualhosts_data[$vhosts_filename].= '  FastCgiExternalServer ' . makeCorrectDir($php->getInterface()->getAliasConfigDir()) . 'ssl-fpm.external -socket ' . $php->getInterface()->getSocketFile() . ' -user ' . $this->settings['phpfpm']['vhost_httpuser'] . ' -group ' . $this->settings['phpfpm']['vhost_httpgroup'] . " -idle-timeout " . $this->settings['phpfpm']['idle_timeout'] . "\n";
+						if($this->settings['system']['mpm_itk'] == '1') {
+							$this->virtualhosts_data[$vhosts_filename].= '  FastCgiExternalServer ' . $php->getInterface()->getAliasConfigDir() . 'fpm.external -socket ' . $php->getInterface()->getSocketFile() . ' -idle-timeout ' . $this->settings['phpfpm']['idle_timeout'] . "\n";
+						}else{				
+							$this->virtualhosts_data[$vhosts_filename].= '  FastCgiExternalServer ' . $php->getInterface()->getAliasConfigDir() . 'fpm.external -socket ' . $php->getInterface()->getSocketFile() . ' -user ' . $this->settings['system']['mod_fcgid_httpuser'] . ' -group ' . $this->settings['system']['mod_fcgid_httpuser'] . " -idle-timeout " . $this->settings['phpfpm']['idle_timeout'] . "\n";
+						}
 					} else {
-						$this->virtualhosts_data[$vhosts_filename].= '  FastCgiExternalServer ' . makeCorrectDir($php->getInterface()->getAliasConfigDir()) . 'fpm.external -socket ' . $php->getInterface()->getSocketFile() . ' -user ' . $this->settings['phpfpm']['vhost_httpuser'] . ' -group ' . $this->settings['phpfpm']['vhost_httpgroup'] . " -idle-timeout " . $this->settings['phpfpm']['idle_timeout'] . "\n";
+						if($this->settings['system']['mpm_itk'] == '1' ) {
+							$this->virtualhosts_data[$vhosts_filename].= '  FastCgiExternalServer ' . $php->getInterface()->getAliasConfigDir() . 'fpm.external -socket ' . $php->getInterface()->getSocketFile() . ' -idle-timeout ' . $this->settings['phpfpm']['idle_timeout'] . "\n";
+						}else{				
+							$this->virtualhosts_data[$vhosts_filename].= '  FastCgiExternalServer ' . $php->getInterface()->getAliasConfigDir() . 'fpm.external -socket ' . $php->getInterface()->getSocketFile() . ' -user ' . $this->settings['system']['mod_fcgid_httpuser'] . ' -group ' . $this->settings['system']['mod_fcgid_httpuser'] . " -idle-timeout " . $this->settings['phpfpm']['idle_timeout'] . "\n";
+						}
 					}
 
 					$this->virtualhosts_data[$vhosts_filename].= '  <Directory "' . $mypath . '">' . "\n";
